@@ -1,4 +1,45 @@
+#User function Template for python3
 
+class Solution:
+    def multiplyStrings(self,s1,s2):
+        # code here
+        # return the product string
+        num = 0
+        sign1 = 1
+        if s1[0] == '-':
+            sign1 = -1
+            for i in range(1, len(s1)):
+                num = num * 10 + int(s1[i])
+        else:
+            for i in range(len(s1)):
+                num = num * 10 + int(s1[i])
+        num = num * sign1
+
+        num2 = 0
+        sign2 = 1
+        if s2[0] == '-':
+            sign2 = -1
+            for i in range(1, len(s2)):
+                num2 = num2 * 10 + int(s2[i])
+        else:
+            for i in range(len(s2)):
+                num2 = num2 * 10 + int(s2[i])
+        num2 = num2 * sign2
+
+        ans = num * num2
+        res = ""
+        sn = sign1 * sign2
+        if sn == 1:
+            while ans > 0:
+                res = chr((ans % 10) + ord('0')) + res
+                ans = ans // 10
+        elif sn < 0:
+            ans = ans * (-1)
+            while ans > 0:
+                res = chr((ans % 10) + ord('0')) + res
+                ans = ans // 10
+            res = '-' + res
+        return res
 
 
 
