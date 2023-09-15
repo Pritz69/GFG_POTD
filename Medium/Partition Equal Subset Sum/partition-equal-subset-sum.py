@@ -1,3 +1,50 @@
+class Solution{
+    static int rec(int ind,int target,int dp[][],int N,int arr[])
+    {
+        if(target==0)
+        {
+            return 1;
+        }
+        if (ind==N)
+        {
+            return 0;
+        }
+        if (dp[ind][target] != -1) 
+        {
+            return dp[ind][target];
+        }
+        int take=0;
+        if (arr[ind]<=target)
+        {
+            take=rec(ind+1,target-arr[ind],dp,N,arr);
+        }
+        int nottake=rec(ind+1,target,dp,N,arr);
+        
+        dp[ind][target]=take | nottake;
+        return dp[ind][target];
+    }
+    static int equalPartition(int N, int arr[])
+    {
+        // code here
+        int s=0;
+        for (int x:arr)
+        {
+            s +=x;
+        }
+        if(s%2==1)
+        {
+            return 0;
+        }
+        int tar=s/2;
+        int dp[][]=new int[N][tar+1];
+        for (int a[]:dp)
+        {
+            Arrays.fill(a,-1);
+        }
+        return rec(0,tar,dp,N,arr);
+    }
+}
+
 # User function Template for Python3
 
 class Solution:
