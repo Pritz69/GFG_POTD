@@ -3,25 +3,18 @@
 class Solution:
     #Function to count the number of ways in which frog can reach the top.
     def countWays(self,n):
-        dp=[-1]*(n+1)
+        dp=[0]*(n+1)
         mod=10**9 + 7
-        def rec(i) :
-            if i==n :
-                return 1
-            if dp[i] != -1 :
-                return dp[i]
-            o=0
+        dp[n]=1
+        for i in range(n-1,-1,-1) :
             if i+1 <=n :
-                o=rec(i+1)%mod
-            t=0
-            if i+2<=n :
-                t=rec(i+2)%mod
-            th=0
+                dp[i]+=dp[i+1]
+            if i+2 <=n :
+                dp[i]+=dp[i+2]
             if i+3<=n :
-                th=rec(i+3)%mod
-            dp[i] = (o+t+th)%mod
-            return dp[i]
-        return rec(0)
+                dp[i]+=dp[i+3]
+            dp[i]=dp[i]%mod
+        return dp[0]
 
 #{ 
  # Driver Code Starts
