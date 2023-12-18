@@ -10,6 +10,14 @@ class Solution:
             if c%2==1 :
                 x=x^v
         return x
+        
+    #    --> xor of a number even no of times leads to 0.
+    #    --> xor of a number odd no of times leads to the number itself.
+    #    --> counting the number of times the num will occur in the subarrays.
+    #    --> left*right -> includes the num too.
+    #    --> then check for its odd or even.
+
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
