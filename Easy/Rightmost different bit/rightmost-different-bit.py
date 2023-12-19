@@ -28,6 +28,13 @@ class Solution:
             c +=1
         return c+1
         
+        #position = 1
+        #while xor:
+        #    if xor & 1:
+        #        return position
+        #    else:
+        #       xor = xor >> 1
+        ##       position += 1
       
 
 #{ 
