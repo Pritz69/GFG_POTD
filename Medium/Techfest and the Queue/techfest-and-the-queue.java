@@ -26,28 +26,35 @@ class GFG {
 }
 
 // } Driver Code Ends
-
-
-
 class Solution {
-    public static long sumOfPowers(long a, long b) {
+    public static long sumOfPowers(long a, long b) 
+    {
         int s = 0;
-        for (long i = a; i <= b; i++) {
-            if (isPrime(i)) {
+        for (long i = a; i <= b; i++) 
+        {
+            if (isPrime(i)) 
+            {
                 s++;
-            } else {
+            }
+            else 
+            {
                 long t = i;
                 long n = i;
                 long j = 2;
-                while (j <= (Math.sqrt(t) + 2)) {
-                    if (n % j == 0 && isPrime(j)) {
+                while (j <= Math.sqrt(t)) 
+                {
+                    if (n % j == 0 && isPrime(j)) 
+                    {
                         s++;
                         n = n / j;
-                        if (isPrime(n)) {
+                        if (isPrime(n)) 
+                        {
                             s++;
                             break;
                         }
-                    } else {
+                    } 
+                    else 
+                    {
                         j++;
                     }
                 }
@@ -56,12 +63,15 @@ class Solution {
         return s;
     }
 
-    private static boolean isPrime(long x) {
+    private static boolean isPrime(long x) 
+    {
         if (x == 1) {
             return false;
         }
-        for (int i = 2; i <= Math.sqrt(x); i++) {
-            if (x % i == 0) {
+        for (int i = 2; i <= Math.sqrt(x); i++) 
+        {
+            if (x % i == 0) 
+            {
                 return false;
             }
         }
