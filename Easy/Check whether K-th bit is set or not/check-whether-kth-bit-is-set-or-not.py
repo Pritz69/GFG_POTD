@@ -7,18 +7,12 @@ import math
 
 # } Driver Code Ends
 #User function Template for python3
-
-
 class Solution:
-    
     #Function to check if Kth bit is set or not.
     def checkKthBit(self, n,k):
         #Your code here
-        new=1<<k
-        if new & n == 0 :
-            return False
-        else :
-            return True
+        return n & (1<<k)
+        
 
 #{ 
  # Driver Code Starts.
