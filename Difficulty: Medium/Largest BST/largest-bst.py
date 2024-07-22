@@ -19,7 +19,7 @@ class Solution:
                 return True, current_size, min(left_min, node.data), max(right_max, node.data)
             else:
                 # If current subtree is not BST, return the maximum of left and right subtree sizes
-                return False, max(left_size, right_size), float('-inf'), float('inf')
+                return False, max(left_size, right_size), float('inf'), float('-inf')
         
         # Call the helper function to get the result
         isBST, size, _, _ = largestBSTHelper(root)
