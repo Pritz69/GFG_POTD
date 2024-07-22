@@ -16,7 +16,7 @@ class Solution:
                 left_max < node.data < right_min):
                 # Calculate size of current BST
                 current_size = 1 + left_size + right_size
-                return True, current_size, min(left_min, node.data), max(right_max, node.data)
+                return True, current_size,min(left_min,node.data),max(node.data,right_max)
             else:
                 # If current subtree is not BST, return the maximum of left and right subtree sizes
                 return False, max(left_size, right_size), float('inf'), float('-inf')
