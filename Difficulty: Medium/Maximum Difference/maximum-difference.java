@@ -30,49 +30,28 @@ public class Main {
 
 class Solution {
     public int findMaxDiff(int[] arr) {
-        int[] leftNSmaller = new int[arr.length];
-        int[] rightNSmaller = new int[arr.length];
-        //for loop for left smaller
-        for(int i =0; i<arr.length;i++){
-            if(i==0){
-                leftNSmaller[i]=0;
-            }
-            for(int k=i-1;k>=0;k--){
-                if(arr[k]<arr[i]){
-                    leftNSmaller[i]=arr[k];
-                    break;
-                }
-                else if(k==0){
-                    leftNSmaller[i]=0;
-                }
-            }
+        // code here
+        int n = arr.length;
+        int left[] = new int[n];
+        int right[] = new int[n];
+        Stack<Integer> st = new Stack<>();
+        for(int i=0;i<n;i++){
+            while(!st.empty() && st.peek()>=arr[i])st.pop();
+            if(!st.empty())left[i]=st.peek();
+            else left[i]=0;
+            st.push(arr[i]);
         }
-        for(int i =0; i<arr.length;i++){
-            if(i==arr.length-1){
-                 rightNSmaller[i]=0;
-            }
-            for(int k=i+1;k<arr.length;k++){
-                if(arr[k]<arr[i]){
-                    rightNSmaller[i]=arr[k];
-                    break;
-                }
-                else if(k==arr.length-1){
-                    rightNSmaller[i]=0;
-                }
-            }
+        while(!st.empty())st.pop();
+        for(int i=n-1;i>=0;i--){
+            while(!st.empty() && st.peek()>=arr[i])st.pop();
+            if(!st.empty())right[i]=st.peek();
+            else right[i]=0;
+            st.push(arr[i]);
         }
-        int max = maxDiffFinder(leftNSmaller, rightNSmaller);
-        return max;
-        
-    }
-    public int maxDiffFinder(int[] left, int[] right){
-        int max=0;
-        for(int i =0;i<left.length;i++){
-            int tempMax = Math.abs(left[i]-right[i]);
-            if(tempMax>max){
-                max=tempMax;
-            }
+        int ans = Integer.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            ans = Math.max(ans,Math.abs(left[i]-right[i]));
         }
-        return max;
+        return ans;
     }
 }
