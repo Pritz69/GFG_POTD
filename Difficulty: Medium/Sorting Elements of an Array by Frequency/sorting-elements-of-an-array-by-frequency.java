@@ -1,46 +1,60 @@
-/*package whatever //do not write package name here */
+//{ Driver Code Starts
+// Initial Template for Java
 
-import java.util.*;
-import java.lang.*;
 import java.io.*;
+import java.lang.*;
+import java.util.*;
+import java.util.Map.Entry;
 
-class GFG {
-	public static void main (String[] args) {
-		//code
-		Scanner sc=new Scanner(System.in);
-		int t=sc.nextInt();
-		for(int i=0;i<t;i++)
-		{
-		    int n=sc.nextInt();
-		    int a[]=new int[n];
-		    for(int j=0;j<n;j++)
-		    {
-		        a[j]=sc.nextInt();
-		    }
-		    Map<Integer,Integer> d=new HashMap<>();
-		    List<Integer> list = new ArrayList<>();
-		    for(int x:a)
-		    {
-		        d.put(x,d.getOrDefault(x,0)+1);
-		        list.add(x);
-		    }
-		    Collections.sort(list,(l1,l2)->{
-		        int f1=d.get(l1);
-		        int f2=d.get(l2);
-		        if (f1 != f2) 
-		        {
-		            return f2-f1;
-		        }
-		        else
-		        {
-		            return l1-l2;
-		        }
-		    });
-		    for(int j=0;j<list.size();j++)
-            {
-                System.out.print(list.get(j)+" ");
-            }
-            System.out.println();
-		}
-	}
+
+// } Driver Code Ends
+// User function Template for Java
+
+class Solution { 
+    
+    public ArrayList<Integer> sortByFreq(int arr[]) {
+        
+        
+        HashMap<Integer,Integer>map=new HashMap<>();
+        
+        ArrayList<Integer>list=new ArrayList<>();
+        
+        for(int a:arr)
+        {
+            map.put(a,map.getOrDefault(a,0)+1);
+            list.add(a);
+        }
+        
+        Collections.sort(list,(x,y)-> map.get(x)==map.get(y)?x-y:map.get(y)-map.get(x));
+        
+        return list;
+        
+        
+    }
 }
+
+//{ Driver Code Starts.
+
+class Driverclass {
+    public static void main(String[] args) throws NumberFormatException, IOException {
+        BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(sc.readLine());
+        while (n != 0) {
+            String input = sc.readLine();
+            String[] inputs = input.split(" ");
+            int[] arr = new int[inputs.length];
+
+            for (int i = 0; i < inputs.length; i++) {
+                arr[i] = Integer.parseInt(inputs[i]);
+            }
+
+            ArrayList<Integer> ans = new ArrayList<Integer>();
+            ans = new Solution().sortByFreq(arr);
+            for (int i = 0; i < ans.size(); i++) System.out.print(ans.get(i) + " ");
+            System.out.println();
+            n--;
+        }
+    }
+}
+
+// } Driver Code Ends
