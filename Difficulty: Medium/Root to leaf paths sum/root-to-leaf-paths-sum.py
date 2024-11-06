@@ -3,12 +3,13 @@
 class Solution:
     def treePathSum(self,root):
         # Code here
-        l=[]
+        s=0
         n=0
         def func(node,n) :
+            nonlocal s
             n=(n*10) + node.data
             if not node.left and not node.right :
-                l.append(n)
+                s +=n
                 return
             if node.left :
                 func(node.left,n)
@@ -16,7 +17,7 @@ class Solution:
                 func(node.right,n)
         
         func(root,n)
-        return sum(x for x in l)
+        return s
 
 
 #{ 
