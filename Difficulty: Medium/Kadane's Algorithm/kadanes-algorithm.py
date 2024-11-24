@@ -5,13 +5,14 @@ class Solution:
     #Function to find the sum of contiguous subarray with maximum sum.
     def maxSubArraySum(self,arr):
         ##Your code here
-        running, s = 0, float('-inf')
-        for e in arr:
-            running += e
-            s = max(s, running)
-            running = max(running, 0)
-            
-        return s
+        current_sum = 0
+        max_sum = float('-inf')
+        for num in arr:
+            current_sum += num
+            max_sum = max(max_sum, current_sum)
+            if current_sum < 0:
+                current_sum = 0
+        return max_sum
 
 #{ 
  # Driver Code Starts
