@@ -1,27 +1,21 @@
 class Solution:
     def countFreq(self, arr, target):
         #code here
-        n=len(arr)
-        lb=n
-        l,h=0,n-1
-        while l <= h :
-            m=(l+h)//2
-            if arr[m] >= target :
-                lb=m
-                h=m-1
-            else :
-                l=m+1
-        ub=n
-        l,h=0,n-1
-        while l <= h :
-            m=(l+h)//2
-            if arr[m] > target :
-                ub=m
-                h=m-1
-            else :
-                l=m+1
+        lb=-1
+        for i,x in enumerate(arr) :
+            if x==target :
+                lb=i
+                break
+        ub=-1
+        for i in range(len(arr)-1,-1,-1) :
+            if arr[i]==target :
+                ub=i
+                break
+        #print(ub,lb)
+        if not (ub==-1 and lb==-1) :
+            return (ub-lb)+1
+        return 0
         
-        return ub-lb
 
 
 #{ 
