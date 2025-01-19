@@ -14,27 +14,31 @@ class Solution:
     
     #Function to rotate a linked list.
     def rotate(self, head, k):
-        # code here
-        n=0
+        # code he
         curr=head
+        l=0
         while curr :
-            n +=1
+            l +=1
             curr=curr.next
-        if k==n :
+        if l==1 :
             return head
-        c=0
+        k=k%l
+        if k==0 :
+            return head
         curr=head
-        while c != k-1 :
+        p=None
+        while k :
+            p=curr
             curr=curr.next
-            c +=1
-        nxt=curr.next
-        curr.next=None
-        curr2=nxt
-        while curr2.next != None :
-            curr2=curr2.next
-        curr2.next=head
-        head=nxt
-        return head
+            k -=1
+        
+        p.next=None
+        ans=curr
+        while curr.next :
+            curr=curr.next
+            
+        curr.next=head
+        return ans
 
 
 #{ 
@@ -84,6 +88,7 @@ if __name__ == "__main__":
         idx += 2
         head = Solution().rotate(head, k)
         printList(head)
+        print("~")
         t -= 1
 
 # } Driver Code Ends
