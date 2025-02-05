@@ -11,116 +11,142 @@ class Node:
 
 class Solution:
     #Function to convert a binary tree into its mirror tree.
-    def mirror(self,root):
+    def mirror(self, root):
         # Code here
-        def func(node):
-            if not node:
-                return
-            
-            # Swap left and right children
-            node.left, node.right = node.right, node.left
-            
-            # Recursively call for the children
+        def func(node) :
+            if not node :
+                return None
+            node.left,node.right=node.right,node.left
             func(node.left)
             func(node.right)
-        
         func(root)
         return root
+
 #{ 
  # Driver Code Starts
 #Initial Template for Python 3
 
-
-
 #Contributed by Sudarshan Sharma
 from collections import deque
+
+
 # Tree Node
 class Node:
+
     def __init__(self, val):
         self.right = None
         self.data = val
         self.left = None
 
 
-def inorderTraversalUtil(root):
-    # Code here
+from collections import deque
+
+
+class Node:
+
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+
+def levelOrder(root):
     if root is None:
-        return
-    inorderTraversalUtil(root.left)
-    print(root.data, end=' ')    
-    inorderTraversalUtil(root.right)
+        return "N\n"
+
+    result = []
+    qq = deque()
+    qq.append(root)
+
+    while qq:
+        curr = qq.popleft()
+
+        if curr is None:
+            result.append("N")
+            continue
+
+        result.append(str(curr.data))
+        qq.append(curr.left)
+        qq.append(curr.right)
+
+    # Remove trailing non-numeric elements
+    while result and not result[-1].isnumeric():
+        result.pop()
+
+    return " ".join(result)
+
 
 def inorderTraversal(root):
     # Code here
     inorderTraversalUtil(root)
     print()
-    
-# Function to Build Tree   
+
+
+# Function to Build Tree
 def buildTree(s):
     #Corner Case
-    if(len(s)==0 or s[0]=="N"):           
+    if (len(s) == 0 or s[0] == "N"):
         return None
-        
-    # Creating list of strings from input 
+
+    # Creating list of strings from input
     # string after spliting by space
-    ip=list(map(str,s.split()))
-    
+    ip = list(map(str, s.split()))
+
     # Create the root of the tree
-    root=Node(int(ip[0]))                     
-    size=0
-    q=deque()
-    
+    root = Node(int(ip[0]))
+    size = 0
+    q = deque()
+
     # Push the root to the queue
-    q.append(root)                            
-    size=size+1 
-    
+    q.append(root)
+    size = size + 1
+
     # Starting from the second element
-    i=1                                       
-    while(size>0 and i<len(ip)):
+    i = 1
+    while (size > 0 and i < len(ip)):
         # Get and remove the front of the queue
-        currNode=q[0]
+        currNode = q[0]
         q.popleft()
-        size=size-1
-        
+        size = size - 1
+
         # Get the current node's value from the string
-        currVal=ip[i]
-        
+        currVal = ip[i]
+
         # If the left child is not null
-        if(currVal!="N"):
-            
+        if (currVal != "N"):
+
             # Create the left child for the current node
-            currNode.left=Node(int(currVal))
-            
+            currNode.left = Node(int(currVal))
+
             # Push it to the queue
             q.append(currNode.left)
-            size=size+1
+            size = size + 1
         # For the right child
-        i=i+1
-        if(i>=len(ip)):
+        i = i + 1
+        if (i >= len(ip)):
             break
-        currVal=ip[i]
-        
+        currVal = ip[i]
+
         # If the right child is not null
-        if(currVal!="N"):
-            
+        if (currVal != "N"):
+
             # Create the right child for the current node
-            currNode.right=Node(int(currVal))
-            
+            currNode.right = Node(int(currVal))
+
             # Push it to the queue
             q.append(currNode.right)
-            size=size+1
-        i=i+1
+            size = size + 1
+        i = i + 1
     return root
-    
-    
-if __name__=="__main__":
-    t=int(input())
-    for _ in range(0,t):
-        s=input()
-        root=buildTree(s)
+
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(0, t):
+        s = input()
+        root = buildTree(s)
         Solution().mirror(root)
-        inorderTraversal(root)
-        
-        
+        print(levelOrder(root))
+        print("~")
 
 # } Driver Code Ends
