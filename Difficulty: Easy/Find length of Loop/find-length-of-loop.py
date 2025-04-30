@@ -19,7 +19,6 @@ class Solution:
             s = s.next
             f = f.next.next
             
-            # cycle detected
             if s == f:
                 cnt = 1
                 node = s.next
@@ -30,8 +29,14 @@ class Solution:
         
         return 0
 
+
+
+
 #{ 
  # Driver Code Starts
+import sys
+
+
 class Node:
 
     def __init__(self, data):
@@ -62,7 +67,6 @@ def loop_here(head, pos):
 
 
 if __name__ == "__main__":
-    import sys
     input = sys.stdin.read
     data = input().split('\n')
     t = int(data[0])
@@ -79,6 +83,7 @@ if __name__ == "__main__":
         ob = Solution()
         res = ob.countNodesInLoop(head)
         print(res)
+        print("~")
         index += 2
 
 # } Driver Code Ends
