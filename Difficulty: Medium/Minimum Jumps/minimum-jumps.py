@@ -1,28 +1,33 @@
-#User function Template for python3
 class Solution:
 	def minJumps(self, arr):
-	    #code here
-        curr_reach, max_reach, jump_count = 0, 0, 0
-        for i in range(len(arr) - 1):
-            max_reach = max(max_reach, i + arr[i])
-            if curr_reach == i:
-                if max_reach == i:
-                    # We cannot jump any further
-                    return -1
-                jump_count += 1
-                curr_reach = max_reach
-        return jump_count
+	    # code here
+	    n = len(arr)
+        if n <= 1:
+            return 0
+        if arr[0] == 0:
+            return -1
 
-#{ 
- # Driver Code Starts
-#Initial Template for Python 3
-if __name__ == '__main__':
-    T = int(input())
-    for i in range(T):
-        # n = int(input())
-        Arr = [int(x) for x in input().split()]
-        ob = Solution()
-        ans = ob.minJumps(Arr)
-        print(ans)
+        jumps = 1
+        farthest = arr[0]
+        end = arr[0]
 
-# } Driver Code Ends
+        for i in range(1, n):
+            if i == n-1:
+                return jumps  # reached end
+
+            farthest = max(farthest, i + arr[i])
+
+            if i == end:  # must jump now
+                jumps += 1
+                end = farthest
+                if end <= i:
+                    return -1  # stuck
+
+        return -1
+	            
+	        
+	    
+	        
+	        
+	        
+	        
