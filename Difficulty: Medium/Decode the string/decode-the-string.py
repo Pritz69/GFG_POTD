@@ -1,43 +1,20 @@
-
 class Solution:
     def decodedString(self, s):
-        # code here
-        nums = []
-        st = []
-        current = []
-    
-        num = 0
-    
-        for c in s:
-            if c.isdigit():
-                num = num * 10 + int(c)
-            elif c == '[':
-                nums.append(num)
-                st.append(current)
-                current = []
-                num = 0
-            elif c == ']':
-                temp = ''.join(current)
-                current = st.pop()
-                count = nums.pop()
-                current.append(temp * count)
-            else:
-                current.append(c)
-    
-        return ''.join(current)
-
-
-#{ 
- # Driver Code Starts
-#Initial Template for Python 3
-
-if __name__ == '__main__':
-    t = int(input())
-    for _ in range(t):
-        s = input()
-
-        ob = Solution()
-        print(ob.decodedString(s))
-        print("~")
-
-# } Driver Code Ends
+        d_s=[] #decodedString
+        for i in s:
+            if i=="]":
+                sub_string=""
+                while d_s[-1] != '[':
+                    sub_string = d_s.pop() + sub_string #prepend the character
+                d_s.pop()
+                
+                repitation=''
+                while d_s and d_s[-1].isdigit():
+                    repitation = d_s.pop() + repitation 
+                
+                d_s.append(int(repitation) * sub_string)
+                continue
+            
+            d_s.append(i)
+        
+        return ''.join(d_s)
