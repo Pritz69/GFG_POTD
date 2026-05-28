@@ -1,0 +1,13 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/wifi-range--170647/1">Wifi Range</a></h2><h3>Difficulty Level : Difficulty: Easy</h3><hr><div class="problems_problem_content__Xm_eO" style="--text-color: var(--problem-text-color);"><p class="isSelectedEnd"><span style="font-size: 14pt;">There are <strong>n</strong> rooms in a straight line in Geekland State University's hostel. You are given a binary string <strong>s</strong> of length <strong>n</strong>, where <strong>s<span class="text-token-text-primary cursor-text rounded-sm" data-placeholder-token="true">[i]</span></strong> = '<strong>1</strong>' means there is a WiFi router in the i-th room, and <strong>s<span class="text-token-text-primary cursor-text rounded-sm" data-placeholder-token="true">[i]</span></strong> = '<strong>0</strong>' means there is no WiFi in that room.</span></p>
+<p class="isSelectedEnd"><span style="font-size: 14pt;">Each WiFi router has a range of <strong>x</strong>, meaning it can cover up to <strong>x </strong>rooms to its left and <strong>x </strong>rooms to its right.</span></p>
+<p><span style="font-size: 14pt;">Given <strong>x</strong> and <strong>s</strong>, determine whether all rooms are covered by at least one WiFi router. Return <strong>true </strong>if all rooms are covered; otherwise, return <strong>false</strong>.</span></p>
+<p><span style="font-size: 18px;"><strong>Examples:&nbsp;</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input: </strong>x = 0, s = "010"
+<strong>Output: </strong>false
+<strong>Explanation</strong>: Since the range is 0, so Wifi is only accessible in second room while 1st &amp; 3rd room have no wifi. Therefore answer is false for this test case.</span>
+</pre>
+<pre><span style="font-size: 18px;"><strong>Input: </strong>x = 1, s = "10010"
+<strong>Output: </strong>true
+<strong>Explanation</strong>: <br>Index 0: WiFi is available.<br>Index 1: Since the range of the 0th index is 1, WiFi is available here.<br>Index 2: Since the range of the 3rd index is 1, WiFi is also available here.<br>Index 3: WiFi is available.<br>Index 4: The range of the 3rd index covers this position.<br>So, all the rooms have WiFi. Therefore, the answer is true for this test case. </span>
+</pre>
+<p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ n ≤ 10<sup>5</sup><br>0 ≤ x ≤ 10<sup>5</sup></span></p></div><br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Strings</code>&nbsp;<code>Data Structures</code>&nbsp;
