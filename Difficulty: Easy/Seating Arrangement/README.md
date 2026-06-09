@@ -1,0 +1,15 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/seating-arrangement--170647/1">Seating Arrangement</a></h2><h3>Difficulty Level : Difficulty: Easy</h3><hr><div class="problems_problem_content__Xm_eO" style="--text-color: var(--problem-text-color);"><p><span style="font-size: 14pt;">Given an integer <strong>k</strong> representing the number of people to be seated and an array <strong>seats[]</strong>, where <strong>0</strong> denotes an empty seat and <strong>1</strong> denotes an occupied seat.</span></p>
+<p><span style="font-size: 14pt;"> Determine whether it is possible to seat all <strong>k</strong> people such that no two occupied seats are adjacent</span><span style="font-size: 14pt;">&nbsp;(including newly seated people).</span></p>
+<p><span style="font-size: 18px;"><strong>Examples:</strong></span></p>
+<pre><span style="font-size: 18px;"><strong><span style="font-size: 18px;">Input:</span> </strong></span><span style="font-size: 18px;">k = 2</span><span style="font-size: 18px;">, </span><span style="font-size: 18px;">seats[] = [0, 0, 1, 0, 0, 0, 1]</span>
+<span style="font-size: 18px;"><strong><span style="font-size: 18px;">Output:</span> </strong></span><span style="font-size: 18px;">true</span>
+<span style="font-size: 18px;"><strong><span style="font-size: 18px;">Explanation:</span> </strong></span><span style="font-size: 18px;">The two people can sit at index 0 and 4.</span>
+</pre>
+<pre><span style="font-size: 18px;"><strong><span style="font-size: 18px;">Input:</span> </strong></span><span style="font-size: 18px;">k = 1</span><span style="font-size: 18px;">, </span><span style="font-size: 18px;">seats[] = [0, 1, 0]</span>
+<span style="font-size: 18px;"><strong><span style="font-size: 18px;">Output:</span> </strong></span><span style="font-size: 18px;">false</span>
+<span style="font-size: 18px;"><strong><span style="font-size: 18px;">Explanation:</span> </strong></span><span style="font-size: 18px;">There is no way to get a seat for one person.</span>
+</pre>
+<pre><span style="font-size: 18px;"><strong>Input: </strong></span><span style="font-size: 18px;">k = 0</span><span style="font-size: 18px;">, </span><span style="font-size: 18px;">seats[] = [0, 0, 0, 1, 1]</span>
+<span style="font-size: 18px;"><strong>Output: </strong></span><span style="font-size: 18px;">false</span>
+<span style="font-size: 18px;"><strong>Explanation: </strong></span><span style="font-size: 18px;">The seating arrangement already contains two adjacent occupied seats at indices 3 and 4.</span></pre>
+<p><strong><span style="font-size: 18px;">Constraints:<br></span></strong><span style="font-size: 18px;">0 ≤ k ≤ 10<sup>5 <br></sup></span><span style="font-size: 18px;">1 ≤ seats.size() ≤ 10<sup>5<br></sup></span><span style="font-size: 18px;">seats[i] == 0 or seats[i] == 1</span></p></div><br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Arrays</code>&nbsp;<code>Greedy</code>&nbsp;
